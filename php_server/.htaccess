@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteBase /php_server
+
+RewriteRule .* run.php
