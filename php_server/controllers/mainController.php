@@ -11,7 +11,7 @@ class mainController{
         $query->execute();
         $result= $query->fetchAll(PDO::FETCH_OBJ);
         echo json_encode($result);
-    //    echo json_encode(apache_request_headers());
+//        echo json_encode($_SERVER[HTTP_AUTHORIZATION]);
         exit;
     }
     function get_data($data){
