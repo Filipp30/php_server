@@ -35,7 +35,7 @@ class Router{
             }
         }
     }
-    function run(){
+    public function run(){
         $uri = $this ->getUri();
         $uri_object = $this->setObject_from_uri($uri);
         $this->callController($uri_object[0],$uri_object[1],$uri_object[2]);
