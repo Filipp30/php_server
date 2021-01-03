@@ -16,6 +16,7 @@ class mainController{
     }
     function get_data($data){
         echo json_encode($data);
+        echo 'test';
     }
 
 
