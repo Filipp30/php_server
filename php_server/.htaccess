@@ -1,4 +1,4 @@
 RewriteEngine on
-RewriteBase /php_server
+RewriteBase /univ_back/php_server/
 
 RewriteRule .* run.php
