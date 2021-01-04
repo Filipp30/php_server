@@ -22,23 +22,41 @@ class Router{
         $obj[] = array_values($segment);
         return $obj;
     }
-    private function callController($controllerName,$funcName,$data = null){
+    private function exist_controller_function($controllerName,$funcName){
         include_once (ROOT.'/controllers/'.$controllerName.'.php');
         if (!class_exists($controllerName)) {
             echo json_encode('Controller not exist !');
+            return false;
         }else{
+            include_once (ROOT.'/controllers/'.$controllerName.'.php');
             $user = new $controllerName;
             if (!method_exists($user,$funcName)){
                 echo json_encode('Function not exist !');
+                return false;
             }else{
-                $user->$funcName($data);
+                return true;
             }
         }
+    }
+    private function methode_permission($controllerName,$funcName,$http_authorization){
+        echo json_encode($http_authorization);
+    return false;
+    }
+    private function call_methode($controllerName,$funcName,$data=null){
+        include_once (ROOT.'/controllers/'.$controllerName.'.php');
+        $user = new $controllerName;
+        $user->$funcName();
     }
     public function run(){
         $uri = $this ->getUri();
         $uri_object = $this->setObject_from_uri($uri);
-        $this->callController($uri_object[0],$uri_object[1],$uri_object[2]);
+        $exist = $this->exist_controller_function($uri_object[0],$uri_object[1]);
+        if ($exist == true){
+            $permission = $this->methode_permission($uri_object[0],$uri_object[1],$_SERVER[HTTP_AUTHORIZATION]);
+            if ($permission == true){
+                $this->call_methode($uri_object[0],$uri_object[1],$uri_object[2]);
+            }
+        }
     }
 
 }

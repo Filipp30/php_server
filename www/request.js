@@ -1,7 +1,8 @@
 
+    const beginUrl = 'http://'+window.location.host+'/univ_back/php_server/';
 
     async function getData(){
-        let data = await fetch('http://localhost:81/univ_back/php_server/mainController/get_all_users',{
+        let data = await fetch(beginUrl +'mainController/get_all_users',{
             method: 'GET',
             headers: {
                 'Authorization': 'some123',
@@ -9,18 +10,34 @@
         });
         let res = await data.json();
         console.log(res);
+
     }
+    async function get_second_Data(){
+        let data = await fetch(beginUrl +'mainController/get_all_users',{
+            method: 'GET',
+            headers: {
+                'Authorization': 'second321',
+            }
+        });
+        let res = await data.json();
+        console.log(res);
+
+    }
+    getData();
+    get_second_Data();
     async function insertUser(username,email,pass,usertype){
         let data = await fetch(
-            'http://localhost:81/univ_back/php_server/mainController/add_user/'+username+'/'+email+'/'+pass+'/'+usertype,{
+            beginUrl +'mainController/add_user/'+username+'/'+email+'/'+pass+'/'+usertype,{
             method: 'POST',
             headers: {
-                'Authorization': 'some123',
+                'Authorization': 'second444',
             }
         });
         let res = await data.json();
         console.log(res);
     }
-    // insertUser('someName','email@email.com','12345','client');
-    getData();
+    // insertUser('Daaaan','Daaaan@email.com','qwe22rty','client');
+
+
+
 
