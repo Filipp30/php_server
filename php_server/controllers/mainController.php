@@ -14,8 +14,13 @@ class mainController{
 //        echo json_encode($_SERVER[HTTP_AUTHORIZATION]);
         exit;
     }
-    function get_data($data){
-        echo json_encode($data);
+    function add_user($data){
+        $user = new DbConnection();
+        $pdo = $user->get_db();
+        $sql = "INSERT INTO users(username,email,pass,usertype)VALUES(?,?,?,?);";
+        $query=$pdo->prepare($sql);
+        $query->execute([$data[0],$data[1],$data[2],$data[3]]);
+        echo json_encode('true');
     }
 
 

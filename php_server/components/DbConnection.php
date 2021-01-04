@@ -9,10 +9,10 @@ class DbConnection{
         return $pdo;
     }
 
-    // public function get_db(){
-    //     $db_name="mvc";
-    //     $dsn = 'mysql:host=localhost:3306;dbname='.$db_name;
-    //     $pdo = new PDO($dsn,'root','root');
-    //     return $pdo;
-    // }
+//     public function get_db(){
+//         $db_name="mvc";
+//         $dsn = 'mysql:host=localhost:3306;dbname='.$db_name;
+//         $pdo = new PDO($dsn,'root','root');
+//         return $pdo;
+//     }
 }
