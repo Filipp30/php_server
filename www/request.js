@@ -10,7 +10,6 @@
         });
         let res = await data.json();
         console.log(res);
-
     }
     async function get_second_Data(){
         let data = await fetch(beginUrl +'mainController/get_all_users',{

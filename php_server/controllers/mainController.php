@@ -11,7 +11,6 @@ class mainController{
         $query->execute();
         $result= $query->fetchAll(PDO::FETCH_OBJ);
         echo json_encode($result);
-//        echo json_encode($_SERVER[HTTP_AUTHORIZATION]);
         exit;
     }
     function add_user($data){
@@ -20,7 +19,6 @@ class mainController{
         $sql = "INSERT INTO users(username,email,pass,usertype)VALUES(?,?,?,?)";
         $query=$pdo->prepare($sql);
         $query->execute([$data[0],$data[1],$data[2],$data[3]]);
-        echo json_encode($_SERVER[HTTP_AUTHORIZATION]);
         exit;
     }
 

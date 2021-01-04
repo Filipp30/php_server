@@ -39,8 +39,8 @@ class Router{
         }
     }
     private function methode_permission($controllerName,$funcName,$http_authorization){
-        echo json_encode($http_authorization);
-    return false;
+        $get_permission = new Autorization($controllerName,$funcName,$http_authorization);
+        return $get_permission->get_permission();
     }
     private function call_methode($controllerName,$funcName,$data=null){
         include_once (ROOT.'/controllers/'.$controllerName.'.php');
