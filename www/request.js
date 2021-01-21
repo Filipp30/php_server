@@ -5,36 +5,42 @@
         let data = await fetch(beginUrl +'mainController/get_all_users',{
             method: 'GET',
             headers: {
-                'Authorization': 'some123',
+                'Authorization': 'test_123_authorization',
             }
         });
         let res = await data.json();
         console.log(res);
     }
-    async function get_second_Data(){
-        let data = await fetch(beginUrl +'mainController/get_all_users',{
-            method: 'GET',
-            headers: {
-                'Authorization': 'second321',
-            }
-        });
-        let res = await data.json();
-        console.log(res);
 
-    }
-    getData();
-    get_second_Data();
-    async function insertUser(username,email,pass,usertype){
+    async function insert_into_database(username,email,pass,usertype){
         let data = await fetch(
             beginUrl +'mainController/add_user/'+username+'/'+email+'/'+pass+'/'+usertype,{
             method: 'POST',
             headers: {
-                'Authorization': 'second444',
+                'Authorization': 'test_123_authorization',
             }
         });
         let res = await data.json();
         console.log(res);
     }
+    async function sendMail(email,message){
+        let data = await fetch(
+            beginUrl +'mainController/send_mail/'+email+'/'+message,{
+            method: 'POST',
+            headers: {
+                'Authorization': 'test_123_authorization',
+            }
+        });
+        let res = await data.text();
+        console.log(res);
+        // return 'mail function called';
+    }
+
+
+
+    sendMail('filipp-tts@outlook.com','some message from JS request');
+    // getData();
+    // get_second_Data();
     // insertUser('Daaaan','Daaaan@email.com','qwe22rty','client');
 
 

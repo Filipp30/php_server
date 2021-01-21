@@ -47,6 +47,9 @@ class Router{
         $user = new $controllerName;
         $user->$funcName();
     }
+
+    // 1. Get URL from www/JS
+    // 2.
     public function run(){
         $uri = $this ->getUri();
         $uri_object = $this->setObject_from_uri($uri);

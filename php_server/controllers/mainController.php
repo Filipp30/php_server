@@ -21,6 +21,9 @@ class mainController{
         $query->execute([$data[0],$data[1],$data[2],$data[3]]);
         exit;
     }
-
+    function send_mail(){
+        echo json_encode('func called from mainController');
+        exit;
+    }
 
 }
