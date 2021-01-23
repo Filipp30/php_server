@@ -1,7 +1,6 @@
 <?php
 
 
-//require_once 'vendor/autoload.php';
 class Router{
     private function getUri(){
         if (!empty($_SERVER['REQUEST_URI'])){
@@ -30,7 +29,6 @@ class Router{
             echo json_encode('Controller not exist !');
             return false;
         }else{
-//            include_once (ROOT.'/controllers/Controller.php');
             $user = new $controllerName;
             if (!method_exists($user,$funcName)){
                 echo json_encode('Function not exist !');

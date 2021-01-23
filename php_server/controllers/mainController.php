@@ -1,5 +1,6 @@
 <?php
 
+
 class mainController{
 
     function get_all_users(){
@@ -17,8 +18,11 @@ class mainController{
 //        exit;
 //    }
     function send_mail($data){
-        echo json_encode($data);
+        $mailer = new Mailer\Mailer();
+        $res = $mailer->send_mail($data->email,$data->message);
+        echo json_encode($res);
         exit;
+
     }
 
 }
