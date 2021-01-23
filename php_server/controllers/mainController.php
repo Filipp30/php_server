@@ -1,15 +1,11 @@
 <?php
 
-
+require_once (ROOT.'/models/mainModel.php');
 class mainController{
 
     function get_all_users(){
-        $user = new DbConnection();
-        $pdo = $user->get_db();
-        $sql= "SELECT * FROM users";
-        $query=$pdo->prepare($sql);
-        $query->execute();
-        $result= $query->fetchAll(PDO::FETCH_OBJ);
+        $model = new mainModel();
+        $result = $model->get_all_users();
         echo json_encode($result);
         exit;
     }
@@ -21,8 +17,8 @@ class mainController{
         $query->execute([$data[0],$data[1],$data[2],$data[3]]);
         exit;
     }
-    function send_mail(){
-        echo json_encode('func called from mainController');
+    function send_mail($data){
+        echo json_encode($data);
         exit;
     }
 

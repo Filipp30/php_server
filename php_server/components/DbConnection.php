@@ -1,6 +1,7 @@
 <?php
 
 
+
 class DbConnection{
     public function get_db(){
         $db_name="us409094_mvc";
@@ -15,4 +16,5 @@ class DbConnection{
 //         $pdo = new PDO($dsn,'root','root');
 //         return $pdo;
 //     }
+
 }

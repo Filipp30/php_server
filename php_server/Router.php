@@ -28,7 +28,7 @@ class Router{
             echo json_encode('Controller not exist !');
             return false;
         }else{
-            include_once (ROOT.'/controllers/'.$controllerName.'.php');
+//            include_once (ROOT.'/controllers/Controller.php');
             $user = new $controllerName;
             if (!method_exists($user,$funcName)){
                 echo json_encode('Function not exist !');
@@ -42,14 +42,24 @@ class Router{
         $get_permission = new Autorization($controllerName,$funcName,$http_authorization);
         return $get_permission->get_permission();
     }
+    private function get_content(){
+        $body = json_decode(file_get_contents("php://input"));
+        return $body;
+    }
     private function call_methode($controllerName,$funcName,$data=null){
+        if (isset($_SERVER['CONTENT_TYPE'])){
+            $data = $this->get_content();
+        }
         include_once (ROOT.'/controllers/'.$controllerName.'.php');
         $user = new $controllerName;
-        $user->$funcName();
+        $user->$funcName($data);
     }
 
     // 1. Get URL from www/JS
-    // 2.
+    // 2. Create array witch Controller-Methode-Param
+    // 3. Check if Controller-Methode exist
+    // 4. JWT
+    // 5. Call Controller-Methode
     public function run(){
         $uri = $this ->getUri();
         $uri_object = $this->setObject_from_uri($uri);

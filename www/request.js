@@ -1,5 +1,5 @@
 
-    const beginUrl = 'http://'+window.location.host+'/univ_back/php_server/';
+    const beginUrl = 'http://'+window.location.host+'/universal_backend/php_server/';
 
     async function getData(){
         let data = await fetch(beginUrl +'mainController/get_all_users',{
@@ -24,22 +24,27 @@
         console.log(res);
     }
     async function sendMail(email,message){
+        const body = {
+            email: email,
+            message: message,
+
+        };
         let data = await fetch(
-            beginUrl +'mainController/send_mail/'+email+'/'+message,{
+            beginUrl +'mainController/send_mail/',{
             method: 'POST',
             headers: {
                 'Authorization': 'test_123_authorization',
-            }
+                'Content-Type': 'application/json'
+            },
+                body: JSON.stringify(body)
         });
-        let res = await data.text();
+        let res = await data.json();
         console.log(res);
-        // return 'mail function called';
     }
 
 
-
-    sendMail('filipp-tts@outlook.com','some message from JS request');
-    // getData();
+    // sendMail('filipp-tts@outlook.com','Some text message for send witch mail');
+    getData();
     // get_second_Data();
     // insertUser('Daaaan','Daaaan@email.com','qwe22rty','client');
 
