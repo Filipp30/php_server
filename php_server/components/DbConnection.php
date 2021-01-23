@@ -1,6 +1,8 @@
 <?php
 
 
+namespace DbConnection;
+use PDO;
 
 class DbConnection{
     public function get_db(){

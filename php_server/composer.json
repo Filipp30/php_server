@@ -1,0 +1,21 @@
+{
+    "name": "vendor/php_server",
+    "description": "universal backend for JS async/awaith API",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Filipp G",
+            "email": "filipp-tts@outlook.com"
+        }
+    ],
+    "require": {
+        "swiftmailer/swiftmailer": "^6.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "DbConnection\\": "components/",
+            "Authorization\\": "components/",
+            "Model\\": "models/"
+        }
+    }
+}
