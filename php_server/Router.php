@@ -1,5 +1,7 @@
 <?php
 
+
+//require_once 'vendor/autoload.php';
 class Router{
     private function getUri(){
         if (!empty($_SERVER['REQUEST_URI'])){
@@ -39,7 +41,7 @@ class Router{
         }
     }
     private function methode_permission($controllerName,$funcName,$http_authorization){
-        $get_permission = new Autorization($controllerName,$funcName,$http_authorization);
+        $get_permission = new Authorization\Authorization($controllerName,$funcName,$http_authorization);
         return $get_permission->get_permission();
     }
     private function get_content(){

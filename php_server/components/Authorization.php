@@ -1,7 +1,7 @@
 <?php
 
-
-class Autorization{
+namespace Authorization;
+class Authorization{
 
     private $controllerName;
     private $functionName;

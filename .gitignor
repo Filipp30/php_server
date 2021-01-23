@@ -1,3 +1,5 @@
-.idea
-.vscode
-.xml
+*.idea
+*.vscode
+*.xml
+/php_server/vendor
+/php_server/composer.lock

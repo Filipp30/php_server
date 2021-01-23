@@ -27,7 +27,6 @@
         const body = {
             email: email,
             message: message,
-
         };
         let data = await fetch(
             beginUrl +'mainController/send_mail/',{
@@ -43,10 +42,9 @@
     }
 
 
-    // sendMail('filipp-tts@outlook.com','Some text message for send witch mail');
+    sendMail('filipp-tts@outlook.com','Some text message for send witch mail');
     getData();
-    // get_second_Data();
-    // insertUser('Daaaan','Daaaan@email.com','qwe22rty','client');
+    // insert_into_database('xxx','xxxx@email.com','xxx','client');
 
 
 
