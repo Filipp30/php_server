@@ -42,7 +42,7 @@
     }
 
 
-    sendMail('filipp-tts@outlook.com','Some text message for send witch mail');
+    // sendMail('filipp-tts@outlook.com','Some text message for send witch mail');
     getData();
     // insert_into_database('xxx','xxxx@email.com','xxx','client');
 

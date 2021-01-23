@@ -21,12 +21,7 @@ class mainModel{
         $pdo = $db_connection->get_db();
         $sql = "INSERT INTO users(username,email,pass,usertype)VALUES(?,?,?,?)";
         $query=$pdo->prepare($sql);
-        $query->execute([$data[0],$data[1],$data[2],$data[3]]);
-//        controle of het insert gelukt is en return true
+        return $result = $query->execute([$data[0],$data[1],$data[2],$data[3]]);
     }
-
-
-
-
 
 }
