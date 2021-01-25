@@ -5,7 +5,7 @@
         let data = await fetch(beginUrl +'mainController/get_all_users',{
             method: 'GET',
             headers: {
-                'Authorization': 'test_123_authorization',
+                'Authorization': 'Bearer test_123_authorization',
             }
         });
         let res = await data.json();
