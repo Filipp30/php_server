@@ -9,6 +9,12 @@ class mainController{
         echo json_encode($result);
         exit;
     }
+    function add_user($data){
+        $model = new Model\mainModel();
+        $result = $model->add_user($data);
+        echo json_encode($result);
+        exit;
+    }
     function send_mail($data){
         $mailer = new Mailer\Mailer();
         $res = $mailer->send_mail($data->email,$data->message);
