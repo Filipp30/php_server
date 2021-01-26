@@ -1,9 +1,9 @@
 <?php
 
-namespace Auth;
+namespace JwtToken;
 use \Firebase\JWT\JWT;
 
-class Auth{
+class JwtToken{
 
     function getJwt(){
 

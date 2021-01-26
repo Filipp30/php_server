@@ -18,11 +18,11 @@
     "autoload": {
         "psr-4": {
             "DbConnection\\": "components/",
-            "Authorization\\": "components/",
+            "Authorization\\": "components/authorization/",
             "Mailer\\": "components/mailer/",
             "Pdf_Creator\\": "components/pdf_creator",
             "Model\\": "models/",
-            "Auth\\": "components/authorization/"
+            "JwtToken\\": "components/authorization/"
         }
     }
 }
