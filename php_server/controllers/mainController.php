@@ -27,4 +27,8 @@ class mainController{
         $pdf->create_pdf();
     }
 
+    function authorize(){
+
+    }
+
 }
