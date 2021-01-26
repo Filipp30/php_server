@@ -49,6 +49,14 @@
         console.log(res);
     }
 
+    async function getJwt(){
+        let data = await fetch(beginUrl +'mainController/authorize/',{
+            method: 'GET'
+        });
+        let res = await data.json();
+        console.log(res);
+    }
+    getJwt();
 
     // sendMail('filipp-tts@outlook.com','Some text message for send witch mail');
     // getData();

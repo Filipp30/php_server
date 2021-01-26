@@ -29,6 +29,11 @@ class mainController{
 
     function authorize(){
 
+        $jwt = new Auth\Auth();
+        $res_jwt = $jwt->getJwt();
+        $toJson = json_encode($res_jwt);
+        echo $toJson;
+        exit;
     }
 
 }

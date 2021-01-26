@@ -12,7 +12,8 @@
         "swiftmailer/swiftmailer": "^6.2",
       "ext-json": "*",
       "ext-pdo": "*",
-        "dompdf/dompdf": "^1.0"
+        "dompdf/dompdf": "^1.0",
+        "firebase/php-jwt": "^5.2"
     },
     "autoload": {
         "psr-4": {
@@ -20,7 +21,8 @@
             "Authorization\\": "components/",
             "Mailer\\": "components/mailer/",
             "Pdf_Creator\\": "components/pdf_creator",
-            "Model\\": "models/"
+            "Model\\": "models/",
+            "Auth\\": "components/authorization/"
         }
     }
 }
