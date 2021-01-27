@@ -29,7 +29,7 @@ class mainController{
 
     function authorize(){
 
-        $jwt = new AuthJwtToken\JwtToken();
+        $jwt = new JwtToken\JwtToken();
         $res_jwt = $jwt->getJwt();
         $toJson = json_encode($res_jwt);
         echo $toJson;
