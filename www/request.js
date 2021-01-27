@@ -62,7 +62,7 @@
     }
 
 
-    // signIn_getJwt('qwer_name','456');
+    signIn_getJwt('qwer_name','456');
 
     // sendMail('filipp-tts@outlook.com','Some text message for send witch mail');
     // getData();

@@ -15,16 +15,16 @@ class identityController{
         $model = new Model\identityModel();
         $result = $model->get_user_from_database($data);
         if($result == true){
-            echo json_encode('create jwt');
+            $this->user_authorization($result->id,$result->email);
         }else{
             echo json_encode('False , User not exist');
         }
 
     }
 
-    function user_authorization(){
+    function user_authorization($id,$email){
         $jwt = new JwtToken\JwtToken();
-        $response_jwt = $jwt->getJwt();
+        $response_jwt = $jwt->getJwt($id,$email);
         echo json_encode($response_jwt);
         exit;
     }
