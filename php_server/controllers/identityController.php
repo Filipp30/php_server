@@ -4,8 +4,11 @@
 class identityController{
 
 
-    function user_registration(){
-
+    function user_registration($data){
+            $model = new Model\identityModel();
+            $result = $model->add_user($data);
+            echo json_encode($result);
+            exit;
     }
 
     function user_authentication(){

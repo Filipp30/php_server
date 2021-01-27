@@ -12,9 +12,9 @@
         console.log(res);
     }
 
-    async function insert_into_database(username,email,pass,usertype){
+    async function add_new_user_into_database(username,email,pass,first_name,last_name){
         let data = await fetch(
-            beginUrl +'mainController/add_user/',{
+            beginUrl +'identityController/user_registration/',{
                 method: 'POST',
                 headers: {
                     'Authorization': 'Bearer test_123_authorization',
@@ -23,14 +23,16 @@
                 body: JSON.stringify({
                     username:username,
                     email:email,
-                    pass:pass,
-                    usertype:usertype,
+                    password:pass,
+                    first_name:first_name,
+                    last_name:last_name,
                 }),
 
         });
         let res = await data.json();
         console.log(res);
     }
+
     async function sendMail(email,message){
         const body = {
             email: email,
@@ -56,11 +58,17 @@
         let res = await data.json();
         console.log(res);
     }
-    // getJwt();
 
+
+
+
+    // getJwt();
     // sendMail('filipp-tts@outlook.com','Some text message for send witch mail');
     // getData();
-    // insert_into_database('test_user','user_test@email.com','ttt','client');
+    // add_new_user_into_database(
+    //     'qwer_name','qwer@some_qwer.com','456','qwer_name','qwer_name').then(
+    //     ()=>{ console.log('function add_new_user_into_database FINISHED');}
+    // );
 
 
 
