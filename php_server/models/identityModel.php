@@ -4,10 +4,11 @@
 namespace Model;
 
 use DbConnection\DbConnection;
+use PDO;
 
 class identityModel{
 
-    function add_user($data){
+    function add_user_into_database($data){
         $db_connection = new DbConnection();
         $pdo = $db_connection->get_db();
         $sql = "INSERT INTO users(username,email,password,first_name,last_name)VALUES(?,?,?,?,?)";
@@ -16,4 +17,17 @@ class identityModel{
             [$data->username,$data->email,$data->password,$data->first_name,$data->last_name]);
     }
 
+    function get_user_from_database($data){
+        $db_connection = new DbConnection();
+        $pdo = $db_connection->get_db();
+        $sql = "SELECT id,email FROM users WHERE username=? AND password=?";
+        $query=$pdo->prepare($sql);
+        $result = $query->execute([$data[0],$data[1]]);
+        $result= $query->fetch(PDO::FETCH_OBJ);
+        if ($result == true){
+            return $result;
+        }else{
+            return false;
+        }
+    }
 }
