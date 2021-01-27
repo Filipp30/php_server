@@ -10,10 +10,11 @@
     ],
     "require": {
         "swiftmailer/swiftmailer": "^6.2",
-      "ext-json": "*",
-      "ext-pdo": "*",
+        "ext-json": "*",
+        "ext-pdo": "*",
         "dompdf/dompdf": "^1.0",
-        "firebase/php-jwt": "^5.2"
+        "firebase/php-jwt": "^5.2",
+        "robmorgan/phinx": "^0.12.5"
     },
     "autoload": {
         "psr-4": {
