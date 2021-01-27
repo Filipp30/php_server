@@ -7,10 +7,10 @@ class JwtToken{
 
     function getJwt(){
 
-        $key = "examplekey";
+        $key = "some_secret_key";
         $payload = array(
-            "sub" => "Filipp",
-            "name" => "Grigoruk",
+            "sub" => "someUser",
+            "name" => "someUser",
             "iat" => 1356999524,
             "nbf" => 1357000000
         );

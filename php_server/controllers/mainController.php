@@ -27,13 +27,6 @@ class mainController{
         $pdf->create_pdf();
     }
 
-    function authorize(){
 
-        $jwt = new JwtToken\JwtToken();
-        $res_jwt = $jwt->getJwt();
-        $toJson = json_encode($res_jwt);
-        echo $toJson;
-        exit;
-    }
 
 }
