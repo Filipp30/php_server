@@ -2,21 +2,24 @@
 
 namespace JwtToken;
 use \Firebase\JWT\JWT;
+use UnexpectedValueException;
 
 class JwtToken{
 
     function getJwt($id,$email){
 
-        $key = "some_secret_key";
+        $key ="j6gbbO8zWI1rsb5UlHxEluRpyptMEuSv8phs9sc5DSaS4hql2YNE3TM";
         $payload = array(
             "id" => $id,
-            "email" => $email,
-            "iat" => 1356999524,
-            "nbf" => 1357000000
+            'iss' => $_SERVER['HOST_NAME'],
+            "exp" => time()+120
         );
-        $jwt = JWT::encode($payload, $key);
-//    $decoded = JWT::decode($jwt, $key, array('HS256'));
-        return $jwt;
+        try{
+            return $jwt = JWT::encode($payload, $key);
+        }catch(UnexpectedValueException $e){
+            echo $e;
+        }
+
     }
 
 

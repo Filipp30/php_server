@@ -35,7 +35,6 @@
             beginUrl +'identityController/user_registration/',{
             method: 'POST',
             headers: {
-                'Authorization': 'Bearer test_123_authorization',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
@@ -54,7 +53,7 @@
         let data = await fetch(beginUrl +'identityController/user_authentication/'+username+'/'+pass,{
             method: 'GET',
             headers: {
-                'Authorization': 'Bearer test_123_authorization',
+                'Content-Type': 'application/json'
             }
         });
         let res = await data.json();
@@ -62,7 +61,7 @@
     }
 
 
-    signIn_getJwt('qwer_name','456');
+    // signIn_getJwt('qwer_name','456');
 
     // sendMail('filipp-tts@outlook.com','Some text message for send witch mail');
     // getData();

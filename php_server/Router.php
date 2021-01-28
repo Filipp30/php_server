@@ -68,6 +68,8 @@ class Router{
             $permission = $this->methode_permission($uri_object[0],$uri_object[1],$_SERVER[HTTP_AUTHORIZATION]);
             if ($permission == true){
                 $this->call_methode($uri_object[0],$uri_object[1],$uri_object[2]);
+            }else{
+                echo 'jwt token not valid';
             }
         }
     }
