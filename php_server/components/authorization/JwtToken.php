@@ -6,7 +6,7 @@ use UnexpectedValueException;
 
 class JwtToken{
 
-    function getJwt($id,$email){
+    function getJwt($id){
 
         $key ="j6gbbO8zWI1rsb5UlHxEluRpyptMEuSv8phs9sc5DSaS4hql2YNE3TM";
         $payload = array(
