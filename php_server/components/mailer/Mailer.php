@@ -10,7 +10,7 @@ use Swift_TransportException;
 
 class Mailer{
 
-    public function send_mail($mail_adres,$message_text){
+    public function send_mail($mail_adres,$message_text): bool{
 
             // Create the Transport
             $transport = (new Swift_SmtpTransport($_ENV['MAIL_HOST'], $_ENV['MAIL_PORT']))

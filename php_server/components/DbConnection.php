@@ -1,10 +1,9 @@
 <?php
 
-
 namespace DbConnection;
 use PDO;
 class DbConnection{
-    public function get_db(){
+    public function get_db(): PDO{
         $db_connection = $_ENV['DB_CONNECTION'];
         $db_name= $_ENV['DB_NAME'];
         $db_host = $_ENV['DB_HOST'];

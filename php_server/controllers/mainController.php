@@ -1,7 +1,8 @@
 <?php
 
 
-class mainController{
+
+class mainController {
 
     function get_all_users(){
         $model = new Model\mainModel();
@@ -15,9 +16,9 @@ class mainController{
         $res = $mailer->send_mail($data->email,$data->message);
         echo json_encode($res);
         exit;
-
     }
-    function create_pdf_file(){
+
+    private function create_pdf_file(){
         $pdf = new Pdf_Creator\Pdf_Creator();
         $pdf->create_pdf();
     }

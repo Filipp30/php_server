@@ -1,13 +1,10 @@
 <?php
 
-
 namespace Pdf_Creator;
-
-
 use Dompdf\Dompdf;
 
 class Pdf_Creator{
-    public function create_pdf(){
+    public function create_pdf(): bool{
 
         $dompdf = new Dompdf();
         $dompdf->loadHtml('pdf creator working  !!!!!!!!!!!!!!!! ');

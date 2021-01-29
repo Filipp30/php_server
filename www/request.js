@@ -1,18 +1,20 @@
 
     const beginUrl = 'http://'+window.location.host+'/universal_backend/php_server/';
 
-    // async function getData(){
-    //     let data = await fetch(beginUrl +'mainController/get_all_users/',{
-    //         method: 'GET',
-    //         headers: {
-    //             'Authorization': 'Bearer test_123_authorization',
-    //         }
-    //     });
-    //     let res = await data.json();
-    //     console.log(res);
-    // }
+    async function getData(){
+        let jwt = localStorage.getItem("jwt_user");
+        let data = await fetch(beginUrl +'mainController/get_all_users/',{
+            method: 'GET',
+            headers: {
+                'Authorization': jwt,
+            }
+        });
+        let res = await data.json();
+        console.log(res);
+    }
 
     async function sendMail(email,message){
+        let jwt = localStorage.getItem("jwt_user");
         const body = {
             email: email,
             message: message,
@@ -21,7 +23,7 @@
             beginUrl +'mainController/send_mail/',{
                 method: 'POST',
                 headers: {
-                    'Authorization': 'Bearer test_123_authorization',
+                    'Authorization': jwt,
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(body)
@@ -50,23 +52,36 @@
     }
 
     async function signIn_getJwt(username,pass){
-        let data = await fetch(beginUrl +'identityController/user_authentication/'+username+'/'+pass,{
-            method: 'GET',
+        let data = await fetch(beginUrl +'identityController/user_authentication/',{
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify({
+                username:username,
+                password:pass,
+            }),
         });
-        let res = await data.json();
-        console.log(res);
+        let res = await data.json().then(
+            function(data){
+                saveJwt(data);
+                console.log('jwt-token:'+data);
+            }
+        )
+    }
+
+    //jwt storage:development mode
+    function saveJwt(res){
+        localStorage.setItem("jwt_user",res);
     }
 
 
-    // signIn_getJwt('qwer_name','456');
+    // signIn_getJwt('mitja','123');
 
     // sendMail('filipp-tts@outlook.com','Some text message for send witch mail');
-    // getData();
+    getData();
     // add_new_user_into_database(
-    //     'qwer_name','qwer@some_qwer.com','456','qwer_name','qwer_name').then(
+    //     'mitja','mitja@some_qwer.com','123','mmm_name','mmm_name').then(
     //     ()=>{ console.log('function add_new_user_into_database FINISHED');}
     // );
 

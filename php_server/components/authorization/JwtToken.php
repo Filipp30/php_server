@@ -6,23 +6,18 @@ use UnexpectedValueException;
 
 class JwtToken{
 
-    function getJwt($id){
-
-        $key ="j6gbbO8zWI1rsb5UlHxEluRpyptMEuSv8phs9sc5DSaS4hql2YNE3TM";
+    function getJwt($id,$email): string{
         $payload = array(
             "id" => $id,
-            'iss' => $_SERVER['HOST_NAME'],
+            'email' => $email,
             "exp" => time()+120
         );
         try{
-            return $jwt = JWT::encode($payload, $key);
+            return $jwt = JWT::encode($payload, $_ENV['JWT_SECRET_KEY']);
         }catch(UnexpectedValueException $e){
             echo $e;
         }
-
     }
-
-
 }
 
 

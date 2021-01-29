@@ -1,8 +1,9 @@
 <?php
 
 
+
 class Router{
-    private function getUri(){
+    private function getUri(): string{
         if (!empty($_SERVER['REQUEST_URI'])){
             return $uri=trim($_SERVER['REQUEST_URI'],'/');
         }
@@ -13,7 +14,7 @@ class Router{
         }
         return $arr;
     }
-    private function setObject_from_uri($uri){
+    private function setObject_from_uri($uri): array{
         $obj=[];
         $segment = explode('/',$uri);
         $segment = $this->remove_first_indexes($segment,2);
@@ -23,7 +24,7 @@ class Router{
         $obj[] = array_values($segment);
         return $obj;
     }
-    private function exist_controller_function($controllerName,$funcName){
+    private function exist_controller_function($controllerName,$funcName): bool{
         include_once (ROOT.'/controllers/'.$controllerName.'.php');
         if (!class_exists($controllerName)) {
             echo json_encode('Controller not exist !');
@@ -38,13 +39,12 @@ class Router{
             }
         }
     }
-    private function methode_permission($controllerName,$funcName,$http_authorization){
+    private function methode_permission($controllerName,$funcName,$http_authorization): bool{
         $get_permission = new Authorization\Authorization($controllerName,$funcName,$http_authorization);
         return $get_permission->get_permission();
     }
     private function get_content(){
-        $body = json_decode(file_get_contents("php://input"));
-        return $body;
+        return $body = json_decode(file_get_contents("php://input"));
     }
     private function call_methode($controllerName,$funcName,$data=null){
         if (isset($_SERVER['CONTENT_TYPE'])){
@@ -65,13 +65,12 @@ class Router{
         $uri_object = $this->setObject_from_uri($uri);
         $exist = $this->exist_controller_function($uri_object[0],$uri_object[1]);
         if ($exist == true){
-            $permission = $this->methode_permission($uri_object[0],$uri_object[1],$_SERVER[HTTP_AUTHORIZATION]);
+            $permission = $this->methode_permission($uri_object[0],$uri_object[1],$_SERVER['HTTP_AUTHORIZATION']);
             if ($permission == true){
                 $this->call_methode($uri_object[0],$uri_object[1],$uri_object[2]);
             }else{
-                echo 'jwt token not valid';
+                echo json_encode('jwt token not valid');
             }
         }
     }
-
 }

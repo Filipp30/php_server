@@ -1,6 +1,6 @@
 {
     "name": "vendor/php_server",
-    "description": "universal backend for JS async/awaith API",
+    "description": "universal backend for JS async/await API",
     "type": "project",
     "authors": [
         {
