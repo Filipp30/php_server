@@ -12,23 +12,23 @@
     //     console.log(res);
     // }
 
-    // async function sendMail(email,message){
-    //     const body = {
-    //         email: email,
-    //         message: message,
-    //     };
-    //     let data = await fetch(
-    //         beginUrl +'mainController/send_mail/',{
-    //             method: 'POST',
-    //             headers: {
-    //                 'Authorization': 'Bearer test_123_authorization',
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify(body)
-    //         });
-    //     let res = await data.json();
-    //     console.log(res);
-    // }
+    async function sendMail(email,message){
+        const body = {
+            email: email,
+            message: message,
+        };
+        let data = await fetch(
+            beginUrl +'mainController/send_mail/',{
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Bearer test_123_authorization',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body)
+            });
+        let res = await data.json();
+        console.log(res);
+    }
 
     async function add_new_user_into_database(username,email,pass,first_name,last_name){
         let data = await fetch(

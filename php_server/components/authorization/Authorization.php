@@ -15,7 +15,6 @@ class Authorization{
     }
 
     function get_permission(){
-
         if($this->controllerName == 'identityController'
             && $this->functionName == 'user_authentication'){
             return true;
