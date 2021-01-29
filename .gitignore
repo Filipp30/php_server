@@ -3,3 +3,4 @@
 /php_server/vendor
 /php_server/composer.lock
 .env
+.package-lock.json
