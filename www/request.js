@@ -51,6 +51,11 @@
         console.log(res);
     }
 
+
+
+    //comment van Korneel :Bij de signIn_getJwt functie
+    // zou ik de username en password in een Basic authentication header steken
+
     async function signIn_getJwt(username,pass){
         let data = await fetch(beginUrl +'identityController/user_authentication/',{
             method: 'POST',
@@ -70,7 +75,7 @@
         )
     }
 
-    //jwt storage:development mode
+    //jwt storage:development mode , need to remove this function and take other storage
     function saveJwt(res){
         localStorage.setItem("jwt_user",res);
     }
