@@ -18,6 +18,7 @@ class identityModel{
     }
 
     public function get_user_from_database($data){
+        return true;
         $db_connection = new DbConnection();
         $pdo = $db_connection->get_db();
         $sql = "SELECT id,email FROM users WHERE username=? AND password=?";

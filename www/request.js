@@ -3,10 +3,11 @@
 
     async function getData(){
         let jwt = localStorage.getItem("jwt_user");
-        let data = await fetch(beginUrl +'mainController/get_all_users/',{
+        let data = await fetch(beginUrl +'mainController/get_all_articles/',{
             method: 'GET',
             headers: {
                 'Authorization': jwt,
+                'Content-Type': 'application/json'
             }
         });
         let res = await data.json();

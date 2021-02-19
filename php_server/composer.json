@@ -14,7 +14,6 @@
         "ext-pdo": "*",
         "dompdf/dompdf": "^1.0",
         "firebase/php-jwt": "^5.2",
-        "robmorgan/phinx": "^0.12.5",
         "vlucas/phpdotenv": "^5.3"
     },
     "autoload": {

@@ -39,8 +39,8 @@ class Router{
             }
         }
     }
-    private function methode_permission($controllerName,$funcName,$http_authorization): bool{
-        $get_permission = new Authorization\Authorization($controllerName,$funcName,$http_authorization);
+    private function methode_permission($controllerName,$funcName): bool{
+        $get_permission = new Authorization\Authorization($controllerName,$funcName);
         return $get_permission->get_permission();
     }
     private function get_content(){
@@ -65,7 +65,7 @@ class Router{
         $uri_object = $this->setObject_from_uri($uri);
         $exist = $this->exist_controller_function($uri_object[0],$uri_object[1]);
         if ($exist == true){
-            $permission = $this->methode_permission($uri_object[0],$uri_object[1],$_SERVER['HTTP_AUTHORIZATION']);
+            $permission = $this->methode_permission($uri_object[0],$uri_object[1]);
             if ($permission == true){
                 $this->call_methode($uri_object[0],$uri_object[1],$uri_object[2]);
             }else{

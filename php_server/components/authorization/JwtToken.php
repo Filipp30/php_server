@@ -7,10 +7,11 @@ use UnexpectedValueException;
 class JwtToken{
 
     function getJwt($id,$email): string{
+        $exp_time = $_ENV['JWT_TOKEN_EXP'];
         $payload = array(
             "id" => $id,
             'email' => $email,
-            "exp" => time()+120
+            "exp" => time()+$exp_time
         );
         try{
             return $jwt = JWT::encode($payload, $_ENV['JWT_SECRET_KEY']);

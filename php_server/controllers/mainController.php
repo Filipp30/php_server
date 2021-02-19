@@ -23,6 +23,12 @@ class mainController {
         $pdf->create_pdf();
     }
 
+    function get_all_articles($data=null){
+        $model = new Model\mainModel();
+        $result = $model->get_all_articles();
+        echo json_encode($result);
+        exit;
+    }
 
 
 }
