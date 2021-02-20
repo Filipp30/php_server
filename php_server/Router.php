@@ -49,6 +49,7 @@ class Router{
     private function call_methode($controllerName,$funcName,$data=null){
         if (isset($_SERVER['CONTENT_TYPE'])){
             $data = $this->get_content();
+//            $data = json_decode($data->body);
         }
         include_once (ROOT.'/controllers/'.$controllerName.'.php');
         $user = new $controllerName;
